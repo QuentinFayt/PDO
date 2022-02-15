@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * Chargement des dépendances
  */
@@ -23,8 +23,4 @@ try {
  * Routeur
  */
 
-/**
- * Nous ne sommes pas connectés
- */
-
- require_once "../controller/publicThearticleController.php";
+require_once "../controller/" . (isset($_SESSION["id"]) && $_SESSION["id"] === session_id() ? "admin" : "public") . "ThearticleController.php";
